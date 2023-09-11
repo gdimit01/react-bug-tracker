@@ -6,7 +6,7 @@ import { useState } from "react";
 function App() {
   const [newBugDescription, setNewBugDescription] = useState<string>("");
   const [newBugPriority, setNewBugPriority] = useState<string>("Medium");
-  const [bugs, setBugs] = useState<
+  const [bugsList, setBugsList] = useState<
     Array<{ title: string; description: string }>
   >([]);
   return (
