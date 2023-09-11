@@ -15,7 +15,7 @@ const BugListTable = (props: {
     <table>
       <thead>
         <tr>
-          <th>Id</th>
+          {/* <th>Id</th> */}
           <th>Description</th>
           <th>Priority</th>
           <th>Resolved</th>
@@ -29,7 +29,7 @@ const BugListTable = (props: {
         ) : (
           bugs.map((bug) => (
             <tr key={bug.id}>
-              <td>{bug.id}</td>
+              {/* <td>{bug.id}</td> */}
               <td>{bug.description}</td>
               <td>{bug.priority}</td>
               <td>
