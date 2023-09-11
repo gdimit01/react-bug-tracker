@@ -16,6 +16,15 @@ function App() {
   return (
     <div>
       <h1>🐞 Bug Tracker</h1>
+      <form onSubmit={addNewBug}>
+        <label htmlFor="newBugDescription">New bug description: </label>
+        <input
+          type="text"
+          id="newBugDescription"
+          value={newBugDescription}
+          onChange={(event) => setNewBugDescription(event.target.value)}
+        />
+      </form>
     </div>
   );
 }
