@@ -18,9 +18,15 @@ function App() {
       description: newBugDescription,
       priority: newBugPriority as BugPriority,
     };
+    setBugsList([...bugsList, newBug]);
+    setNewBugDescription("");
+    setNewBugPriority("Medium");
   };
 
-  const deleteBug = () => {};
+  const deleteBug = (id: string) => {
+    const bugs = bugsList.filter((bug) => bug.id !== id);
+    setBugsList(bugs);
+  };
 
   return (
     <div>
