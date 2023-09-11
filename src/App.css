@@ -45,7 +45,7 @@ td[colspan="4"] {
   font-weight: bold;
 }
 
-.app-new-bug-form {
+.add-new-bug-form {
   padding: 2rem;
   background-color: #333; /* slightly darker than table header for distinction */
   margin: 2rem auto;
@@ -54,14 +54,14 @@ td[colspan="4"] {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* subtle shadow for depth */
 }
 
-.app-new-bug-form label {
+.add-new-bug-form label {
   display: block; /* making them block elements */
   color: white;
   margin-bottom: 0.5rem; /* space below each label */
   font-size: calc(10px + 1vmin); /* slightly smaller than main font-size */
 }
 
-.app-new-bug-form input[type="text"] {
+.add-new-bug-form input[type="text"] {
   padding: 10px 15px;
   font-size: 16px;
   border: 1px solid #555;
@@ -79,12 +79,12 @@ td[colspan="4"] {
 }
 
 /* On focus styling */
-.app-new-bug-form input[type="text"]:focus {
+.add-new-bug-form input[type="text"]:focus {
   border-color: #007bff;
   outline: none;
 }
 
-.app-new-bug-form select {
+.add-new-bug-form select {
   width: 100%; /* full width of form */
   padding: 0.5rem;
   border: 1px solid #555;
@@ -103,6 +103,6 @@ td[colspan="4"] {
   border-radius: 5px;
 }
 
-.app-new-bug-form button:hover {
+.add-new-bug-form button:hover {
   background-color: #4fa8d4; /* slightly darker shade for hover effect */
 }
