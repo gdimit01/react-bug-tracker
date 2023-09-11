@@ -4,6 +4,7 @@ import "./App.css";
 import { useState } from "react";
 import { BugPriority, IBug } from "./IBug";
 import { v4 as uuid } from "uuid";
+import BugListTable from "./BugListTable";
 
 function App() {
   const [newBugDescription, setNewBugDescription] = useState<string>("");
@@ -29,28 +30,34 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>🐞 Bug Tracker</h1>
-      <form onSubmit={addNewBug}>
-        <label htmlFor="newBugDescription">New bug description: </label>
-        <input
-          type="text"
-          id="newBugDescription"
-          value={newBugDescription}
-          onChange={(event) => setNewBugDescription(event.target.value)}
-        />
-        <label htmlFor="newBugPriority">New bug priority: </label>
-        <select
-          id="newBugPriority"
-          value={newBugPriority}
-          onChange={(event) => setNewBugPriority(event.target.value)}
-        >
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-        </select>
-        <button type="submit">Add New Bug</button>
-      </form>
+    <div className="App">
+      <h1 className="App-header">🐞 Bug Tracker</h1>
+      <BugListTable
+        bugs={bugsList}
+        onDeleteBug={(id: string) => deleteBug(id)}
+      />
+      <div className="add-new-bug-form">
+        <form onSubmit={addNewBug}>
+          <label htmlFor="newBugDescription">New bug description: </label>
+          <input
+            type="text"
+            id="newBugDescription"
+            value={newBugDescription}
+            onChange={(event) => setNewBugDescription(event.target.value)}
+          />
+          <label htmlFor="newBugPriority">New bug priority: </label>
+          <select
+            id="newBugPriority"
+            value={newBugPriority}
+            onChange={(event) => setNewBugPriority(event.target.value)}
+          >
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+          <button type="submit">Add New Bug</button>
+        </form>
+      </div>
     </div>
   );
 }
