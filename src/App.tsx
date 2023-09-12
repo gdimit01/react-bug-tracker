@@ -1,55 +1,72 @@
-import React, { FormEvent } from "react";
-import logo from "./logo.svg";
+import React, { useState, FormEvent } from "react";
 import "./App.css";
-import { useState } from "react";
 import { BugPriority, IBug } from "./IBug";
 import { v4 as uuid } from "uuid";
 import BugListTable from "./BugListTable";
 
+interface BugStatisticsProps {
+  bugs: IBug[];
+}
+
+function BugStatistics({ bugs }: BugStatisticsProps) {
+  const totalBugs = bugs.length;
+  const lowPriorityBugs = bugs.filter((bug) => bug.priority === "Low").length;
+  const mediumPriorityBugs = bugs.filter(
+    (bug) => bug.priority === "Medium"
+  ).length;
+  const highPriorityBugs = bugs.filter((bug) => bug.priority === "High").length;
+
+  return (
+    <div className="statistics-dashboard">
+      <h2>Statistics</h2>
+      <p>Total Bugs: {totalBugs}</p>
+      <p>Low Priority: {lowPriorityBugs}</p>
+      <p>Medium Priority: {mediumPriorityBugs}</p>
+      <p>High Priority: {highPriorityBugs}</p>
+    </div>
+  );
+}
+
 function App() {
-  const [newBugDescription, setNewBugDescription] = useState<string>("");
-  const [newBugPriority, setNewBugPriority] = useState<string>("Medium");
+  const [newBugDescription, setNewBugDescription] = useState("");
+  const [newBugPriority, setNewBugPriority] = useState("Medium");
   const [bugsList, setBugsList] = useState<IBug[]>([]);
 
   const addNewBug = (event: FormEvent) => {
     event.preventDefault();
-
-    const newBug: IBug = {
+    const newBug = {
       id: uuid(),
       description: newBugDescription,
       priority: newBugPriority as BugPriority,
     };
-    setBugsList([...bugsList, newBug]);
+    setBugsList((prevBugs) => [...prevBugs, newBug]);
     setNewBugDescription("");
     setNewBugPriority("Medium");
   };
 
   const deleteBug = (id: string) => {
-    const bugs = bugsList.filter((bug) => bug.id !== id);
-    setBugsList(bugs);
+    setBugsList((prevBugs) => prevBugs.filter((bug) => bug.id !== id));
   };
 
   return (
-    <div className="App">
+    <>
       <h1 className="App-header">🐞 Bug Tracker</h1>
-      <BugListTable
-        bugs={bugsList}
-        onDeleteBug={(id: string) => deleteBug(id)}
-      />
+      <BugStatistics bugs={bugsList} />
+      <BugListTable bugs={bugsList} onDeleteBug={deleteBug} />
       <div className="add-new-bug-form">
         <form onSubmit={addNewBug}>
-          <label htmlFor="newBugDescription">New bug description: </label>
+          <label htmlFor="newBugDescription">New bug description:</label>
           <input
             type="text"
             id="newBugDescription"
             value={newBugDescription}
-            onChange={(event) => setNewBugDescription(event.target.value)}
+            onChange={(e) => setNewBugDescription(e.target.value)}
           />
-          <label htmlFor="newBugPriority">New bug priority: </label>
+          <label htmlFor="newBugPriority">New bug priority:</label>
           <select
             id="newBugPriority"
             value={newBugPriority}
-            onChange={(event) => setNewBugPriority(event.target.value)}
+            onChange={(e) => setNewBugPriority(e.target.value)}
           >
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
@@ -58,7 +75,7 @@ function App() {
           <button type="submit">Add New Bug</button>
         </form>
       </div>
-    </div>
+    </>
   );
 }
 

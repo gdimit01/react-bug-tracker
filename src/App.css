@@ -1,44 +1,52 @@
-.app {
+.App {
   width: 600px;
   margin: 0 auto;
+  font-family: "Arial", sans-serif;
 }
 
 table {
-  width: 99%; /* You can adjust this based on your layout needs */
+  width: 99%;
   margin: 2rem auto;
   border-collapse: collapse;
 }
 
 thead {
-  background-color: #333;
-  color: white;
+  background-color: #2e3a4b;
+  color: #f7f7f7;
 }
 
 th,
 td {
   padding: 0.5rem;
-  border: 1px solid #555;
+  border: 1px solid #d1d5db;
   text-align: left;
 }
 
 td {
-  background-color: #282c34;
-  color: white;
+  background-color: #f7f7f7;
+  color: #333;
 }
 
-button {
-  background-color: #61dafb; /* Using the color from App-link for a cohesive look */
+button,
+.add-new-bug-form button {
+  background-color: #007bff;
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  border-radius: 5px;
+  color: white;
 }
 
-button:hover {
-  background-color: #4fa8d4; /* Slightly darker shade for hover effect */
+button:hover,
+.add-new-bug-form button:hover {
+  background-color: #0056b3;
 }
 
-/* If there are no bugs, let's give a little styling to the message */
+button:active,
+.add-new-bug-form button:active {
+  background-color: #004080; /* Slightly darker shade for active state */
+}
 
 td[colspan="4"] {
   text-align: center;
@@ -47,62 +55,60 @@ td[colspan="4"] {
 
 .add-new-bug-form {
   padding: 2rem;
-  background-color: #333; /* slightly darker than table header for distinction */
+  background-color: #f7f7f7;
   margin: 2rem auto;
-  width: 91%; /* adjust as needed */
-  border-radius: 5px; /* rounded corners */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* subtle shadow for depth */
+  width: 91%;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .add-new-bug-form label {
-  display: block; /* making them block elements */
-  color: white;
-  margin-bottom: 0.5rem; /* space below each label */
-  font-size: calc(10px + 1vmin); /* slightly smaller than main font-size */
+  display: block;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
-.add-new-bug-form input[type="text"] {
+.add-new-bug-form input[type="text"],
+.add-new-bug-form select {
   padding: 10px 15px;
-  font-size: 16px;
-  border: 1px solid #555;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
   border-radius: 4px;
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 10px;
   transition: border-color 0.3s;
-
-  /* Font specific styling */
-  font-family: "Arial", sans-serif; /* This uses Arial as the primary font, but you can replace it with any other font or font-family. */
-  color: #333; /* Color of the text */
-  font-weight: bold; /* Normal weight */
-  background-color: rgb(175, 215, 248);
+  color: #333;
+  background-color: white;
 }
 
-/* On focus styling */
 .add-new-bug-form input[type="text"]:focus {
   border-color: #007bff;
   outline: none;
 }
 
-.add-new-bug-form select {
-  width: 100%; /* full width of form */
-  padding: 0.5rem;
-  border: 1px solid #555;
-  border-radius: 5px; /* rounded corners */
-  margin-bottom: 1rem; /* space after each input or select */
-  color: #333; /* text color */
-  background-color: rgb(77, 164, 236); /* input background */
-}
-
-.add-new-bug-form button {
-  background-color: #61dafb; /* using color from App-link */
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+.statistics-dashboard {
+  background-color: #f7f7f7;
   border-radius: 5px;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.add-new-bug-form button:hover {
-  background-color: #4fa8d4; /* slightly darker shade for hover effect */
+.statistics-dashboard h2 {
+  color: #333;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.statistics-dashboard p {
+  color: #555;
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
